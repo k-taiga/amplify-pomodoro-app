@@ -2,6 +2,9 @@
 
 AWS Amplify Gen2 + Vite + React で構築する Pomodoro タイマーアプリ
 
+<img width="3786" height="2300" alt="CleanShot 2026-01-20 at 14 39 48@2x" src="https://github.com/user-attachments/assets/deb8c48b-6d84-4d79-81c5-bed5c03e4860" />
+
+
 ## 機能概要
 
 - Google アカウントでのユーザー認証
