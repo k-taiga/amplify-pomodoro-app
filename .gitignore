@@ -46,3 +46,7 @@ amplify_outputs.json
 
 # IDE
 .idea/
+
+# amplify
+amplify_outputs*
+amplifyconfiguration*

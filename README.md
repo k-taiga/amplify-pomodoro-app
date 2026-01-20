@@ -1,6 +1,6 @@
 # Pomodoro App
 
-AWS Amplify Gen2 + Next.js 14 で構築する Pomodoro タイマーアプリ
+AWS Amplify Gen2 + Vite + React で構築する Pomodoro タイマーアプリ
 
 ## 機能概要
 
@@ -14,7 +14,7 @@ AWS Amplify Gen2 + Next.js 14 で構築する Pomodoro タイマーアプリ
 
 | カテゴリ | 技術 |
 |----------|------|
-| フロントエンド | Next.js 14 (App Router), TypeScript, Tailwind CSS |
+| フロントエンド | Vite, React 19, TypeScript, Tailwind CSS |
 | バックエンド | AWS Amplify Gen2 (AppSync, DynamoDB, Cognito) |
 | 認証 | Amazon Cognito + Google OAuth |
 | UI | Amplify UI React |
@@ -67,7 +67,7 @@ mise use node@24
 node -v  # v24.x.x
 ```
 
-### 4. 依存パッケージのインストール
+### 4. 依存関係のインストール
 
 ```bash
 npm install
@@ -85,19 +85,14 @@ cp .env.example .env
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 ```
-## 6. Next.js プロジェクト作成
+
+### 6. Amplify バックエンドの初期化
 
 ```bash
-npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+npm create amplify@latest
 ```
 
-## 7. Amplify パッケージ追加
-```bash
-npm install aws-amplify @aws-amplify/ui-react
-npm install -D @aws-amplify/backend @aws-amplify/backend-cli
-```
-
-### 8. Amplify Sandbox の起動
+### 7. Amplify Sandbox の起動
 
 ```bash
 npx ampx sandbox
@@ -105,7 +100,7 @@ npx ampx sandbox
 
 初回起動時は AWS リソースの作成に数分かかります。
 
-### 9. 開発サーバーの起動
+### 8. 開発サーバーの起動
 
 別ターミナルで実行：
 
@@ -113,7 +108,7 @@ npx ampx sandbox
 npm run dev
 ```
 
-http://localhost:3000 にアクセス
+http://localhost:5173 にアクセス
 
 ## ディレクトリ構成
 
@@ -126,10 +121,11 @@ amplify-pomodoro-app/
 │   │   └── resource.ts     # データスキーマ
 │   └── backend.ts
 ├── src/
-│   ├── app/                # Next.js App Router
 │   ├── components/         # React コンポーネント
 │   ├── hooks/              # カスタムフック
-│   └── lib/                # ユーティリティ
+│   ├── lib/                # ユーティリティ
+│   ├── App.tsx             # メインコンポーネント
+│   └── main.tsx            # エントリーポイント
 ├── .mise.toml              # Node.js バージョン管理
 └── README.md
 ```
@@ -138,8 +134,9 @@ amplify-pomodoro-app/
 
 | コマンド | 説明 |
 |----------|------|
-| `npm run dev` | 開発サーバー起動 |
+| `npm run dev` | 開発サーバー起動（localhost:5173） |
 | `npm run build` | ビルド |
 | `npm run lint` | Lint 実行 |
+| `npm run preview` | ビルド結果のプレビュー |
 | `npx ampx sandbox` | Amplify Sandbox 起動 |
 | `npx ampx generate graphql-client-code` | GraphQL 型生成 |
