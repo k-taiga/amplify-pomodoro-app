@@ -1,0 +1,12 @@
+# Amplify
+.amplify/
+amplify_outputs.json
+
+# Environment
+.env
+
+# node
+node_modules
+
+# IDE
+.idea/
